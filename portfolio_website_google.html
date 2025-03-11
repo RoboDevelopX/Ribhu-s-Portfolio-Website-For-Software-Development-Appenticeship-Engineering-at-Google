@@ -1,0 +1,89 @@
+import React from "react";
+import { HashRouter as Router } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+const Home = () => (
+  <div className="p-10 text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white min-h-screen flex flex-col items-center justify-center">
+    <motion.h1 className="text-5xl font-extrabold" animate={{ scale: 1.1 }}>
+      Ribhu Banerjee
+    </motion.h1>
+    <p className="text-2xl mt-2">Aspiring Data Analyst & Software Developer</p>
+    <p className="mt-4 max-w-xl">Building intelligent solutions with AI, SQL, and scalable software.</p>
+    <Link to="/projects">
+      <Button className="mt-6 bg-white text-blue-600 hover:bg-gray-200">View Projects</Button>
+    </Link>
+  </div>
+);
+
+const About = () => (
+  <div className="p-10 bg-gray-100 min-h-screen flex flex-col items-center text-center">
+    <h2 className="text-4xl font-bold text-blue-600">About Me</h2>
+    <p className="mt-4 max-w-2xl">I am an aspiring Data Analyst and Software Developer with experience in AI and scalable systems.</p>
+    <p className="mt-2 max-w-2xl">Interned at Open Weaver, led an e-commerce platform's development, and hold multiple AI certifications.</p>
+  </div>
+);
+
+const Projects = () => (
+  <div className="p-10 bg-white min-h-screen">
+    <h2 className="text-4xl font-bold text-center text-purple-600">Projects</h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 px-10">
+      <Card className="shadow-lg hover:shadow-xl transition-all">
+        <CardContent>
+          <h3 className="text-xl font-semibold">E-commerce Platform</h3>
+          <p className="mt-2">Scalable architecture improving transaction speed by 50%, driving $2M revenue growth.</p>
+        </CardContent>
+      </Card>
+      <Card className="shadow-lg hover:shadow-xl transition-all">
+        <CardContent>
+          <h3 className="text-xl font-semibold">Data Analysis Dashboard</h3>
+          <p className="mt-2">SQL & Python-based insights for large datasets.</p>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+);
+
+const Resume = () => (
+  <div className="p-10 bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+    <h2 className="text-4xl font-bold text-blue-600">Resume</h2>
+    <a href="/resume.pdf" download>
+      <Button className="mt-6 bg-blue-600 text-white hover:bg-blue-700">Download Resume</Button>
+    </a>
+  </div>
+);
+
+const Contact = () => (
+  <div className="p-10 bg-gradient-to-r from-purple-500 to-blue-600 text-white min-h-screen flex flex-col items-center justify-center text-center">
+    <h2 className="text-4xl font-bold">Contact</h2>
+    <p className="mt-4">Email: ribhu@example.com</p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/ribhuban" target="_blank" className="underline">linkedin.com/in/ribhuban</a></p>
+    <p>GitHub: <a href="https://github.com/ribhuban" target="_blank" className="underline">github.com/ribhuban</a></p>
+  </div>
+);
+
+const App = () => {
+  return (
+    <Router>
+      <div className="min-h-screen">
+        <nav className="p-5 bg-white shadow-md flex justify-center gap-6 text-lg font-semibold text-blue-600">
+          <Link to="/" className="hover:text-purple-600">Home</Link>
+          <Link to="/about" className="hover:text-purple-600">About</Link>
+          <Link to="/projects" className="hover:text-purple-600">Projects</Link>
+          <Link to="/resume" className="hover:text-purple-600">Resume</Link>
+          <Link to="/contact" className="hover:text-purple-600">Contact</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
